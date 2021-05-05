@@ -1,0 +1,14 @@
+{
+    "name": "lvirot/dyn-dns",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^7.3",
+        "ext-json": "*",
+        "monolog/monolog": "^2.2",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "description": "",
+    "autoload": {
+        "psr-4": {"LVirot\\": "src/"}
+    }
+}

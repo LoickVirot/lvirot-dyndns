@@ -1,0 +1,8 @@
+# Composer
+vendor
+
+# PHPStorm
+.idea
+
+# Logs
+logs
