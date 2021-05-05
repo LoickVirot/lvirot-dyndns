@@ -6,3 +6,6 @@ vendor
 
 # Logs
 logs
+
+# Env
+.env
