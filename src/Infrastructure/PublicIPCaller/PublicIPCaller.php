@@ -5,6 +5,7 @@ namespace LVirot\Infrastructure\PublicIPCaller;
 
 
 use GuzzleHttp\Client;
+use LVirot\Domain\Model\DNSEntry;
 use LVirot\Domain\Ports\IPublicIPCaller;
 
 class PublicIPCaller implements IPublicIPCaller
@@ -21,6 +22,13 @@ class PublicIPCaller implements IPublicIPCaller
     {
         $ipRes = $this->client->get('https://ifconfig.co/ip', ['decode_content' => false]);
 
-        return trim($ipRes->getBody()->read(16));
+        $rawBody = $ipRes->getBody();
+
+        $body = '';
+        while (!$rawBody->eof()) {
+            $body .= $rawBody->read(16);
+        }
+
+        return trim($body);
     }
 }
