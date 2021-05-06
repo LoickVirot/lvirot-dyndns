@@ -59,12 +59,19 @@ class CloudflareCaller implements IDNSCaller
     public function refreshDns(string $ip): DNSEntry {
         $this->logger->info("Changing DNS ip to {$ip}.");
 
+        $type = "A";
+        if (strlen($ip) > 15) {
+            $type = "AAAA";
+        }
+
+        echo "type";
+
         $request = $this->client->put('/client/v4/zones/' . $this->zoneId . '/dns_records/' . $this->recordId, [
         'headers' => [
             'Authorization' => 'Bearer ' . $this->apikey
         ],
         'body'    => json_encode([
-            'type'    => 'A',
+            'type'    => $type,
             'name'    => $this->dnsEntryName,
             'proxied' => true,
             'content' => $ip,
