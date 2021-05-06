@@ -63,7 +63,7 @@ class CloudflareCaller implements IDNSCaller
         if (strlen($ip) > 15) {
             $type = "AAAA";
         }
-        
+
         $request = $this->client->put('/client/v4/zones/' . $this->zoneId . '/dns_records/' . $this->recordId, [
         'headers' => [
             'Authorization' => 'Bearer ' . $this->apikey

@@ -20,7 +20,7 @@ class PublicIPCaller implements IPublicIPCaller
 
     public function getPublicIP(): string
     {
-        $ipRes = $this->client->get('https://ifconfig.co/ip', ['decode_content' => false]);
+        $ipRes = $this->client->get('https://api.ipify.org', ['decode_content' => false]);
 
         $rawBody = $ipRes->getBody();
 
